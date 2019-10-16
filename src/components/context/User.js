@@ -3,27 +3,21 @@ import { ProfileContext } from "./ProfileContext";
 import Team from "./Team";
 
 const User = () => {
-  // const context = useContext(ProfileContext);
+  const context = useContext(ProfileContext);
 
   return (
     <div>
-      <ProfileContext.Consumer>
-        {context => (
-          <Fragment>
-            <a href={context.url}>
-              <img src={context.userImage} width="138px" />
-            </a>
-            <h1>{context.userName}</h1>
-            <p>{context.fullName}</p>
-            <Team />
-            <button onClick={() => context.changeTeam("Angular")}>
-              Angular
-            </button>
-            <button onClick={() => context.changeTeam("Vue")}>Vue</button>
-            <button onClick={() => context.changeTeam("React")}>React</button>
-          </Fragment>
-        )}
-      </ProfileContext.Consumer>
+      <Fragment>
+        <a href={context.url}>
+          <img src={context.userImage} width="138px" />
+        </a>
+        <h1>{context.userName}</h1>
+        <p>{context.fullName}</p>
+        <Team />
+        <button onClick={() => context.changeTeam("Angular")}>Angular</button>
+        <button onClick={() => context.changeTeam("Vue")}>Vue</button>
+        <button onClick={() => context.changeTeam("React")}>React</button>
+      </Fragment>
     </div>
   );
 };

@@ -3,12 +3,10 @@ import { ProfileContext } from "./ProfileContext";
 import User from "./User";
 
 const Profile = () => {
-  // const context = useContext(ProfileContext);
+  const context = useContext(ProfileContext);
   return (
     <div>
-      <ProfileContext.Consumer>
-        {context => <img src={context.companyImage} />}
-      </ProfileContext.Consumer>
+      {context => <img src={context.companyImage} />}
       <User />
     </div>
   );
