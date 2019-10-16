@@ -1,23 +1,20 @@
-import React, { Fragment, useContext } from "react";
+import React, { useContext } from "react";
 import { ProfileContext } from "./ProfileContext";
 import Team from "./Team";
+import ChangeTeam from "./ChangeTeam";
 
 const User = () => {
   const context = useContext(ProfileContext);
 
   return (
     <div>
-      <Fragment>
-        <a href={context.url}>
-          <img src={context.userImage} width="138px" />
-        </a>
-        <h1>{context.userName}</h1>
-        <p>{context.fullName}</p>
-        <Team />
-        <button onClick={() => context.changeTeam("Angular")}>Angular</button>
-        <button onClick={() => context.changeTeam("Vue")}>Vue</button>
-        <button onClick={() => context.changeTeam("React")}>React</button>
-      </Fragment>
+      <a href={context.url}>
+        <img src={context.userImage} width="138px" />
+      </a>
+      <h1>{context.userName}</h1>
+      <p>{context.fullName}</p>
+      <Team />
+      <ChangeTeam />
     </div>
   );
 };

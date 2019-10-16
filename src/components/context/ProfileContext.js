@@ -1,9 +1,8 @@
-import React from "react";
-import { render } from "react-dom";
+import React, { useState } from "react";
 
 const ProfileContext = React.createContext();
-class ProfileProvider extends React.Component {
-  state = {
+const ProfileProvider = props => {
+  const userInformation = {
     company: "Progress",
     companyImage: "https://svgshare.com/i/9ir.svg",
     url: "https://www.telerik.com/kendo-react-ui/",
@@ -11,18 +10,17 @@ class ProfileProvider extends React.Component {
     userName: "Kendoka",
     fullName: "Kendō No Arikata",
     team: "KendoReact",
-    changeTeam: team =>
-      this.setState({
-        team: `Kendo${team}`
-      })
+    toggleTeam: (property, value) => {
+      setUserInfo({ ...userInfo, [property]: value });
+    }
   };
-  render() {
-    return (
-      <ProfileContext.Provider value={this.state}>
-        {this.props.children}
-      </ProfileContext.Provider>
-    );
-  }
-}
+  const [userInfo, setUserInfo] = useState(userInformation);
+
+  return (
+    <ProfileContext.Provider value={userInfo}>
+      {props.children}
+    </ProfileContext.Provider>
+  );
+};
 
 export { ProfileContext, ProfileProvider };
